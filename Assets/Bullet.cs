@@ -9,7 +9,16 @@ public class Bullet : MonoBehaviour
     {
         
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        //もし相手のタグがEnemyなら
+        if(other.gameObject.tag=="Enemy")
+        {
+            //ダメージ関数を実行させる
+            other.GetComponent<Enemy>().Damage();
+            Destroy(this.gameObject);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
